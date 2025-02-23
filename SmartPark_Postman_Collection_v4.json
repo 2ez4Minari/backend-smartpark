@@ -1,0 +1,96 @@
+{
+    "info": {
+        "name": "SmartPark_Postman_Collection_v4",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Register Parking Lot",
+            "request": {
+                "method": "POST",
+                "url": "{{baseUrl}}/api/parking-lot",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"location\": \"Downtown\",\n    \"capacity\": 100\n}"
+                }
+            }
+        },
+        {
+            "name": "Register Vehicle",
+            "request": {
+                "method": "POST",
+                "url": "{{baseUrl}}/api/vehicle",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"licensePlate\": \"ABC-123\",\n    \"type\": \"CAR\",\n    \"ownerName\": \"John Doe\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Check-In Vehicle (by lotId)",
+            "request": {
+                "method": "POST",
+                "url": "{{baseUrl}}/api/parking-lot/1/checkin",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"licensePlate\": \"ABC-123\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Check-Out Vehicle (by lotId)",
+            "request": {
+                "method": "POST",
+                "url": "{{baseUrl}}/api/parking-lot/1/checkout",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"licensePlate\": \"ABC-123\"\n}"
+                }
+            }
+        },
+        {
+            "name": "View Parking Lot Status (by id)",
+            "request": {
+                "method": "GET",
+                "url": "{{baseUrl}}/api/parking-lot/1/status"
+            }
+        },
+        {
+            "name": "List All Vehicles in a Lot",
+            "request": {
+                "method": "GET",
+                "url": "{{baseUrl}}/api/parking-lot/1/vehicles"
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ]
+}
